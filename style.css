@@ -1,0 +1,422 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --text-clr: #f7d7d7;
+  --bg-clr: #3b2b3d;
+
+  --clr-primary-400: #ca70e2;
+  --clr-secondary-400: #27273a;
+  --clr-accent-400: #e728b7;
+
+  --ff-primary: 'Inter', sans-serif;
+
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semi-bold: 600;
+  --fw-bold: 700;
+
+  --fs-300: .875rem;
+  --fs-400: 1rem;
+  --fs-500: 1.5rem;
+  --fs-600: 2.25rem;
+  --fs-700: 2.75rem;
+
+  --blob-sz: 500px;
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* General styling */
+body {
+  font-family: var(--ff-primary);
+  font-size: var(--fs-400);
+  color: var(--text-clr);
+
+  background-color: var(--bg-clr);
+}
+
+.blob-container::before {
+  content: '';
+  position: absolute;
+  overflow: hidden;
+
+  width: min(var(--blob-sz), 100%);
+  height: min(var(--blob-sz), 100%);
+  background-color: #896f91;
+
+  top: 7%;
+  left: 12%;
+
+  filter: blur(200px);
+  z-index: -1;
+}
+
+.blob-container::after {
+  content: '';
+  position: absolute;
+  overflow: hidden;
+
+  width: min(var(--blob-sz), 100%);
+  height: min(var(--blob-sz), 100%);
+  background-color: #882a51;
+
+  bottom: 14%;
+  right: 22%;
+
+  filter: blur(200px);
+  z-index: -1;
+}
+
+@media (max-width: 570px) {
+  body {
+    background-image: linear-gradient(to top left, #882a51, #896f91);
+  }
+
+  .blob-container::after,
+  .blob-container::before {
+    display: none;
+  }
+}
+
+span {
+  color: var(--clr-accent-400);
+}
+
+.container { 
+  --max-width: 1110px;
+  --padding: 1.5rem;
+  width: min(var(--max-width), 100% - var(--padding));
+  margin-inline: auto;
+}
+
+/* Utility classes */
+.primary-heading {
+  font-size: var(--fs-700);
+  font-weight: var(--fw-bold);
+}
+
+@media (max-width: 296px) {
+  .primary-heading {
+    font-size: var(--fs-600);
+  }
+}
+
+.fs-500 {
+  font-size: var(--fs-500);
+}
+
+.fs-600 {
+  font-size: var(--fs-600);
+}
+
+.fs-700 {
+  font-size: var(--fs-700);
+}
+
+/* Header */
+.header {
+  display: flex;
+  gap: .5rem;
+  justify-content: center;
+  align-items: center;
+  padding-block: 5rem;
+}
+
+.hero-icon {
+  width: 40px;
+  object-fit: contain;
+  box-shadow: 3px 3px 3px black;
+}
+
+.icon-wrapper {
+  padding-block: 5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.play-icon {
+  width: 300px;
+  object-fit: contain;
+  user-select: none;
+  cursor: pointer;
+  filter: drop-shadow(1px 3px 5px rgb(43, 41, 42));
+  transition: transform .5s;
+}
+
+.play-icon:hover {
+  transform: scale(1.1);
+}
+
+.logo-text {
+  text-shadow: 3px 3px 3px black;
+}
+
+.landing-view {
+  padding-block: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 6rem;
+}
+
+/* Button */
+.button {
+  cursor: pointer;
+  height: 5rem;
+  padding-inline: 1rem;
+
+  width: 200px;
+
+  background-color: rgb(189, 165, 188);
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  box-shadow: 0px 10px #775477;
+
+  font-weight: var(--fw-bold);
+  letter-spacing: 2;
+  color: var(--text-clr);
+  text-shadow: 3px 3px 3px black;
+
+  transition: transform .2s;
+}
+
+.button:is(:focus-within, :hover  ) {
+  transform: scale(1.1);
+}
+
+.button:active {
+  transition: transform 0s;
+  transform: scale(1);
+  box-shadow: none;
+}
+
+/* Board */
+.board {
+  --board-width: 650px;
+  --tile-size: 70px;
+  --tile-margin: 9.5px;
+
+  max-width: var(--board-width);
+  display: flex;
+  flex-wrap: wrap;
+  
+  background-image: linear-gradient(to bottom right, var(--clr-primary-400), var(--clr-secondary-400), var(--clr-accent-400));
+  border-radius: 10px;
+  box-shadow: 0px 0px 1px 5px rgb(53, 53, 53);
+  padding: 1rem;
+  
+  margin: 2rem auto;
+  display: none;
+}
+
+@media (max-width: 643px) {
+  .board {
+    --board-width: 520px;
+    --tile-size: 55px;
+    --tile-margin: 8.5px;
+  }
+}
+
+@media (max-width: 543px) {
+  .board {
+    --board-width: 420px;
+    --tile-size: 40px;
+    --tile-margin: 7.5px;
+  }
+}
+
+@media (max-width: 405px) {
+  .board {
+    --board-width: 330px;
+    --tile-size: 30px;
+    --tile-margin: 5.5px;
+  }
+}
+
+@media (max-width: 325px) {
+  .board {
+    --board-width: 250px;
+    --tile-size: 25px;
+    --tile-margin: 3.5px;
+  }
+}
+
+/* Tile */
+.tile {
+  height: var(--tile-size);
+  width: var(--tile-size);
+  margin: var(--tile-margin);
+
+  /* Circle */
+  background-color: rgb(253, 203, 242);
+  border-radius: 50%;
+  border: 5px solid rgb(53, 53, 53);
+
+  flex: 1 0 10%;
+  cursor: pointer;
+}
+
+.cursor-default {
+  cursor: default;
+}
+
+.player1 {
+  background-color: rgb(12, 70, 60);
+  box-shadow: inset 0px 0px 50px rgb(137, 236, 220);
+}
+
+.player2 {
+  background-color: rgb(138, 138, 29);
+  box-shadow: inset 0px 0px 50px rgb(248, 248, 137);
+}
+
+.winningTile {
+  background-color: rgb(26, 109, 44);
+  box-shadow: inset 0px 0px 50px rgb(71, 245, 109);
+}
+
+/* Game */
+.game-start {
+  display: flex;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: grid;
+}
+
+/* Notification banner */
+.banner-container {
+  display: grid;
+  text-align: center;
+  justify-content: center;
+  position: relative;
+}
+
+.banner {
+  display: none;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  padding: 1rem 3rem;
+  border-radius: 2px;
+  background-color: rgb(227, 222, 235, .2);
+  box-shadow: 0px 0px 1px 5px rgb(53, 53, 53, .2);
+}
+
+.banner-active {
+  display: block;
+}
+
+.banner-text {
+  font-weight: var(--fw-semi-bold);
+  font-size: var(--fs-700);
+  color: var(--text-clr);
+  text-shadow: 3px 3px 3px black;
+}
+
+@media (max-width: 570px) {
+  .banner {
+    padding: 1rem 2rem;
+  }
+
+  .banner-text {
+    font-size: var(--fs-500);
+  }
+}
+
+@media (max-width: 405px) {
+  .banner {
+    padding: 1rem 1.5rem;
+  }
+
+  .banner-text {
+    font-size: var(--fs-400);
+  }
+}
+
+@media (max-width: 325px) {
+  .banner {
+    padding: 1rem 1rem;
+  }
+
+  .banner-text {
+    font-size: var(--fs-300);
+  }
+}
